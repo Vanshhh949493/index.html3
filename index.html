@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proposed Her</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+    body { width: 100%; min-height: 100vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg, #ffafbd, #ffc3a0, #d9a6a6); text-align: center; overflow-x: hidden; }
+    .container { display: flex; flex-direction: column; align-items: center; gap: 20px; max-width: 500px; margin: 20px; }
+    .tenor-gif-embed { max-width: 200px; }
+    .btn { display: flex; gap: 25px; margin-top: 20px; }
+    .btn button { text-decoration: none; color: #111; background: #fff; padding: 12px 28px; border-radius: 66px; box-shadow: 0.5rem 1rem 3rem rgba(0,0,0,0.2); border: none; font-size: 16px; cursor: pointer; transition: all 0.3s ease; }
+    #move-random { position: relative; z-index: 10; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    img { max-width: 280px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    h1 { font-size: 1.8rem; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+  </style>
+</head>
+<body>
+  <audio id="bgm" loop>
+    <source src="Until I Found You - Stephen Sanchez (AI Filtered Instrumental) - morca.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="content" class="container">
+    <div class="tenor-gif-embed" data-postid="22885016" data-width="100%"></div>
+    <h1>Shamuuuuu, Do u luv me? 🥺</h1>
+    <p style="color: white;">I'm all urs 😁😘</p>
+    <div class="btn">
+      <button onclick="startExperience('yes')">Jii Ofc </button>
+      <button onclick="startExperience('no1')">Hatt nikal</button>
+    </div>
+  </div>
+
+  <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+  <script>
+    const content = document.getElementById('content');
+    const audio = document.getElementById('bgm');
+    let musicStarted = false;
+
+    function startExperience(page) {
+      if (!musicStarted) {
+        audio.play().catch(e => console.log("Music blocked by browser until tap"));
+        musicStarted = true;
+      }
+      showPage(page);
+    }
+
+    function showPage(page) {
+      if (page === 'yes') {
+        confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
+        content.innerHTML = `
+          <img src="1771005156379.png" alt="Price">
+          <h1>Hehehehe tysmm jii, ye lo apka price 😁🫶🏻👍🏻</h1>
+          <h2 style="color: white; margin-top: 15px;">I LUV U SO MUCH 💋😘</h2>
+          <h1 style="color: #ff4d4d; font-size: 2rem;">Hpy Valentine's Day Darll 💝</h1>
+        `;
+      } else if (page === 'no1') {
+        content.innerHTML = `
+          <div class="tenor-gif-embed" data-postid="22050818" data-width="100%"></div>
+          <h1>Esa naa!! Dikhadi na asliyat 🥺😭</h1>
+          <div class="btn">
+            <button onclick="showPage('yes')">Yes</button>
+            <button onclick="showPage('no2')">No</button>
+          </div>
+        `;
+      } else if (page === 'no2') {
+        content.innerHTML = `
+          <div class="tenor-gif-embed" data-postid="15195810" data-width="100%"></div>
+          <h1>Ek aur baar Soch lo! 😣</h1>
+          <div class="btn">
+            <button onclick="showPage('yes')">Are mazak kar rhi thi ilu yrr 😁</button>
+            <button onclick="showPage('no3')">No</button>
+          </div>
+        `;
+      } else if (page === 'no3') {
+        content.innerHTML = `
+          <img src="crying.jpg" alt="Rula Diya">
+          <h1>Lo rula diya na 😢🥺</h1>
+          <p style="color: white;">Me baccha bann jauga, bss yess krdo 😝😁</p>
+          <div class="btn">
+            <button onclick="showPage('yes')">Yess Yess</button>
+            <button id="move-random" onmouseenter="moveEl(this)" ontouchstart="moveEl(this)">No (pkdkar bata 😝😁)</button>
+          </div>
+        `;
+      }
+      
+      const script = document.createElement('script');
+      script.src = "https://tenor.com/embed.js";
+      document.body.appendChild(script);
+    }
+
+    function moveEl(elm) {
+      elm.style.position = "absolute";
+      elm.style.top = Math.floor(Math.random() * 80 + 5) + "%";
+      elm.style.left = Math.floor(Math.random() * 80 + 5) + "%";
+    }
+  </script>
+</body>
+</html>
